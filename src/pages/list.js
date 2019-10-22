@@ -2,6 +2,11 @@
  * Created by Ljili on 2019/10/18.
  */
 import React,{Component} from 'react';
+import {
+  BrowserRouter as Router,
+  Link,
+  Route
+} from "react-router-dom";
 class Test extends React.Component{
   constructor(props) {
     super()
@@ -111,11 +116,33 @@ class AutoFocusTextInput extends React.Component {
     );
   }
 }
+function ListItemLink({to,...rest}) {
+  return (
+    <Route path={to} children={({match})=>(
+      <li className={match?'active':''}>
+        <Link to={to} {...rest}>{to}</Link>
+      </li>
+    )}>
+    </Route>
+  )
+}
+function ListItemTo() {
+  return (
+    <Router>
+      <ul>
+        <ListItemLink to="/somewhere" />
+        <ListItemLink to="/somewhere-else" />
+      </ul>
+    </Router>
+  )
+  
+}
 class List extends Component{
   render(){
     return <div className="about-con">
             <h1>list</h1>
             <Test></Test>
+      <ListItemTo></ListItemTo>
             <FormTest></FormTest>
       <AutoFocusTextInput></AutoFocusTextInput>
            </div>

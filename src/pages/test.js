@@ -3,14 +3,14 @@
  */
 import React from 'react'
 import {Button} from 'antd'
-import { Menu, Icon } from 'antd';
+import { Menu } from 'antd';
 
 import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Redirect,
-  useHistory
+  // Redirect,
+  // useHistory
 } from "react-router-dom";
 
 const { SubMenu } = Menu;
@@ -90,7 +90,7 @@ class Test extends React.Component{
   }
   render(){
     let isLoggedIn=this.state.isLoggedIn;
-    let button;
+    // let button;
     // if(isLoggedIn){
     //   button=<LogoutButton customClick={this.handleLogoutClick}></LogoutButton>
     // }else{

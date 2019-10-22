@@ -6,8 +6,8 @@ import slide1 from './../images/slide1.png'
 import {
   BrowserRouter as Router,
   Switch,
-  Route,
-  Link,
+  // Route,
+  // Link,
   useParams,
   useHistory,
   useLocation,

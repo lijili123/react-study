@@ -4,9 +4,9 @@ import 'antd/dist/antd.css';
 import Home from './pages/home'
 import About from './pages/about'
 import Users from './pages/user'
-import Empty from './pages/empty'
+// import Empty from './pages/empty'
 import Test from './pages/test'
-import Login from './pages/login'
+// import Login from './pages/login'
 import List from './pages/list'
 import {Button} from 'antd'
 import {
@@ -55,7 +55,7 @@ function App() {
             {/*<Route path="/users"><Users />*/}
             {/*</Route>*/}
             <PrivateRoute path="/users"><Users /></PrivateRoute>
-            <Route paht="/login">
+            <Route path="/login">
               <LoginPage></LoginPage>
             </Route>
             {/*<Redirect to="/">*/}
@@ -106,6 +106,7 @@ function AuthButton() {
 function LoginPage() {
   let history = useHistory();
   let location = useLocation();
+  console.log(history);
   console.log(location);
 
   let { from } = location.state || { from: { pathname: "/" } };

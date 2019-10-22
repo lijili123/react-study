@@ -1,7 +1,7 @@
 /**
  * Created by Ljili on 2019/10/15.
  */
-import React,{Component} from 'react'
+import React from 'react'
 import {
   BrowserRouter as Router,
   Switch,

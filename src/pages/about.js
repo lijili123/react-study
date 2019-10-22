@@ -40,7 +40,7 @@ class About extends React.Component{
     // }))
     let rowIndex
     aboutList.forEach((item,index)=>{
-      if(item.id==row.id){
+      if(item.id===row.id){
         rowIndex=index
       }
     })
