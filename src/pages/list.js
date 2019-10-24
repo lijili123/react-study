@@ -1,12 +1,13 @@
 /**
  * Created by Ljili on 2019/10/18.
  */
-import React,{Component} from 'react';
+import React,{Component,useState,useEffect} from 'react';
 import {
   BrowserRouter as Router,
   Link,
   Route
 } from "react-router-dom";
+import {Button} from 'antd'
 class Test extends React.Component{
   constructor(props) {
     super()
@@ -135,7 +136,27 @@ function ListItemTo() {
       </ul>
     </Router>
   )
-  
+}
+function Example() {
+  //useState 会返回一对值：当前状态和一个让你更新它的函数，你可以在事件处理函数中或其他一些地方调用这个函数
+  const [count, setCount] = useState(0);//useState(0)初始值0 useState(1) 初始值1
+  // 声明多个 state 变量！
+  // const [age, setAge] = useState(42);
+  // const [fruit, setFruit] = useState('banana');
+  // const [todos, setTodos] = useState([{ text: 'Learn Hooks' }]);
+
+  // 相当于 componentDidMount 和 componentDidUpdate:
+  useEffect(() => {
+    // 使用浏览器的 API 更新页面标题
+    document.title = `You clicked ${count} times`;
+  })
+
+  return (
+    <div>
+      <h1>you click {count} times</h1>
+      <Button type='primary' onClick={()=>setCount(count+1)}>Click Me</Button>
+    </div>
+  )
 }
 class List extends Component{
   render(){
@@ -145,7 +166,9 @@ class List extends Component{
       <ListItemTo></ListItemTo>
             <FormTest></FormTest>
       <AutoFocusTextInput></AutoFocusTextInput>
+      <Example></Example>
            </div>
   }
 }
+
 export default List

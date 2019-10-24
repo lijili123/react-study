@@ -41,6 +41,9 @@ function App() {
               <div>
                 <NavLink  to="/users" activeClassName='active' >Users</NavLink >
               </div>
+              <div>
+                <NavLink  to="/blog/:slug" activeClassName='active' >BlogPost</NavLink >
+              </div>
             </div>
         </div>
         <div className="content">
@@ -60,12 +63,23 @@ function App() {
             </Route>
             {/*<Redirect to="/">*/}
             {/*</Redirect>*/}
-
+            <BlogPost></BlogPost>
           </Switch>
         </div>
       </div>
     </Router>
   );
+}
+
+function BlogPost() {
+  //render prop 参数match的使用
+  return (
+    <Route path="/blog/:slug" render={({match})=>{
+      console.log(match)
+      //Do whatever you want with the match.
+      return <div>blog</div>
+    }}></Route>
+  )
 }
 
 const fakeAuth = {
@@ -104,13 +118,13 @@ function AuthButton() {
 }
 
 function LoginPage() {
-  let history = useHistory();
-  let location = useLocation();
-  console.log(history);
+  let history = useHistory();//push(),go(),goBack(),goForward(),replace()
+  let location = useLocation();//{hash:'',key:'',pathname:'',search:'',state:{from:{hash:'',key:'',pathname:'',search:''}}}// from 从哪个路由跳转的（上一个路由）
   console.log(location);
+  // console.log(location);
 
-  let { from } = location.state || { from: { pathname: "/" } };
-  console.log(from);
+  let { from } = location.state || { from: { pathname: "/" } };//es6对象解构
+  // console.log(from);
   let login = () => {
     fakeAuth.authenticate(() => {
       history.replace(from);
@@ -128,6 +142,8 @@ function LoginPage() {
 function PrivateRoute(props) {
   let { children, ...rest }=props//解构赋值
   return (
+    //Route (render func ) render 方法 有三个参数可以作为 render prop 参数分别是 match，history，location
+    //render props 模式   任何被用于告知组件需要渲染什么内容的函数 prop 在技术上都可以被称为 “render prop”.
     <Route
       {...rest}
       render={({ location }) =>
@@ -142,7 +158,7 @@ function PrivateRoute(props) {
           />
         )
       }
-    />
+    />// 这里就是告诉你不同状态渲染不同页面
   );
 }
 export default App;

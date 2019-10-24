@@ -44,13 +44,13 @@ function Users() {
       </div>
     </div>
 }
-function UserAll() {
-  let {id}=useParams()
-  console.log(useParams())
-  return (
-    <div className="user-item">{id}</div>
-  )
-}
+// function UserAll() {
+//   let {id}=useParams()
+//   console.log(useParams())//返回url的参数键值对的对象{id:'user1'}
+//   return (
+//     <div className="user-item">{id}</div>
+//   )
+// }
 function User1() {
   return (
     <div className="user-item">user1</div>

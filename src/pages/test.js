@@ -2,8 +2,11 @@
  * Created by Ljili on 2019/10/17.
  */
 import React from 'react'
+import PropTypes from 'prop-types';
 import {Button} from 'antd'
 import { Menu } from 'antd';
+
+
 
 import {
   BrowserRouter as Router,
@@ -12,6 +15,7 @@ import {
   // Redirect,
   // useHistory
 } from "react-router-dom";
+
 
 const { SubMenu } = Menu;
 class Sider extends React.Component {
@@ -62,6 +66,13 @@ function LoginButton(props) {
   return (
     <Button type="primary" onClick={props.customClick}>登录</Button>
   )
+}
+LoginButton.propTypes={
+  customClick:PropTypes.func
+}
+LogoutButton.propTypes={
+  name:PropTypes.string,
+  customClick:PropTypes.func
 }
 function LogoutButton(props) {
   return (
