@@ -116,8 +116,54 @@ class Test extends React.Component{
         }
         {/*{button}*/}
         <Sider></Sider>
+        <UlItem></UlItem>
       </div>
       )
+  }
+}
+
+
+class LiItem extends React.Component{
+  handleDel=()=>{
+    this.props.deleteItem(this.props.index)
+  //子组件向父组件传值 （自定义事件作为一个props）
+  }
+  render(){
+    //子组件向父组件传值
+    return  <li style={{padding:'10px 0px',fontSize:'16px',fontWeight:'700'}} index={this.props.index} onClick={this.handleDel}>{this.props.name}</li>
+  }
+}
+let ulData=[
+  {id:'1',name:'11111'},
+  {id:'2',name:'22222'},
+  {id:'3',name:'33333'},
+  {id:'4',name:'44444'},
+  {id:'5',name:'55555'},
+]
+class UlItem extends React.Component {
+  constructor(props) {
+    super(props)
+  }
+  handleDel=(index)=>{
+    console.log(index);
+  }
+  handleDelLi=(index)=>{
+    console.log(index);
+  }
+  render() {
+    return (
+      <div>
+        <h1>子组件向父组件传值</h1>
+        <ul>
+          {ulData.map((item,index)=>{
+            {/*deleteItem 自定义事件*/}
+            return <LiItem name={item.name} index={index} key={item.id} deleteItem={this.handleDel}></LiItem>
+            {/*return <li name={item.name} key={item.id} onClick={this.handleDelLi.bind(this,index)}>{item.name}</li>*/}
+          })}
+        </ul>
+      </div>
+    )
+
   }
 }
 export default Test
